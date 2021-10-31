@@ -12,6 +12,14 @@ $borders: 15px;
   @return map-get($colors, $color-name);
 }
 
+$desktop: 840px;
+
+@mixin desktop {
+  @media (min-width: #{$desktop}) {
+    @content;
+  }
+}
+
 body,
 html {
   height: 100%;
@@ -28,6 +36,10 @@ body {
     height: 100%;
     position: absolute;
     z-index: -1;
+
+    @include desktop {
+      clip-path: polygon(0 0, 77% 0, 61% 100%, 0% 100%);
+    }
   }
 
   header a {
@@ -35,7 +47,7 @@ body {
     text-decoration: none;
     padding: $padding;
     display: block;
-    text-decoration: uppercase;
+    text-transform: uppercase;
   }
 }
 
@@ -73,4 +85,36 @@ main {
       }
     }
   }
+
+  section#primary {
+    color: #fff;
+    padding: $padding;
+    text-align: center;
+
+
+    h1 {
+      font-size: 3em;
+      margin-top: 10px;
+      text-transform: uppercase;
+    }
+
+    p { 
+      font-size: 1.4em;
+    }
+
+    a {
+      color: color(primary-dark);
+      border-radius: $borders;
+      text-decoration: none;
+      text-transform: uppercase;
+      font-weight: bold;
+      background-color: color(accent);
+      display: block;
+      text-align: center;
+      margin: 50px auto 0 auto;
+      padding: $padding;
+    }
+  }
 }
+
+// Stopped at 32:51 https://www.youtube.com/watch?v=roywYSEPSvc&t=1431s&ab_channel=DesignCourse
